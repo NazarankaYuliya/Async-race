@@ -1,0 +1,18 @@
+@if (car) {
+<div class="car-container">
+    <div class="btn-container">
+        <button>Select</button>
+        <button>Remove</button>
+    </div>
+
+    <div class="btn-container">
+        <button>Start</button>
+        <button>Stop</button>
+    </div>
+
+
+    <div class="car" [style.backgroundColor]="car.color">Car</div>
+    {{ car.name }}
+
+</div>
+}
