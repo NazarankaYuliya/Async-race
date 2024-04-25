@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 
-import { Car } from "../../models/garage.interfaces";
+import { Car } from "../../../../models/garage.interfaces";
 import { CarComponent } from "../car/car.component";
 
 @Component({

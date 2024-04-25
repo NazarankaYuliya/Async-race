@@ -1,0 +1,7 @@
+<form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+    <div>
+        <input type="text" formControlName="name" placeholder="Enter car name" />
+        <input type="color" formControlName="color" />
+        <button type="submit" [disabled]="!updateForm.valid || !selectedCarID">Update</button>
+    </div>
+</form>

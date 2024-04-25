@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="button-container">
+            <button>Race</button>
+            <button>Reset</button>
+            <div>
+                <app-create-car></app-create-car>
+            </div>
+            <div>
+                <app-update-car></app-update-car>
+            </div>
+            <app-generate-random-cars></app-generate-random-cars>
+        </div>
+
+        <div class="car-container">
+            <app-cars-list [cars]="cars"></app-cars-list>
+        </div>
+
+        <div class="pagination-container">
+            <div>Garage ( {{ totalCars }} )</div>
+            <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+                (pageChange)="goToPage($event)"></app-pagination>
+        </div>
+    </div>
+</div>
