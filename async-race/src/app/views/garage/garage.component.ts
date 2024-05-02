@@ -11,6 +11,8 @@ import { loadCars } from "../../store/cars/cars.actions";
 import { getCarsList, getTotalCount } from "../../store/cars/cars.selectors";
 import { GenerateRandomCarsComponent } from "./components/generate-random-cars/generate-random-cars.component";
 import { PaginationComponent } from "./components/pagination/pagination.component";
+import { RaceButtonComponent } from "./components/race-button/race-button.component";
+import { ResetButtonComponent } from "./components/reset-button/reset-button.component";
 
 @Component({
     selector: "app-garage",
@@ -21,6 +23,8 @@ import { PaginationComponent } from "./components/pagination/pagination.componen
         UpdateCarComponent,
         GenerateRandomCarsComponent,
         PaginationComponent,
+        RaceButtonComponent,
+        ResetButtonComponent,
     ],
     templateUrl: "./garage.component.html",
     styleUrl: "./garage.component.scss",

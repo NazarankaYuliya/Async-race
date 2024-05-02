@@ -5,19 +5,26 @@ import { Car } from "../../../../models/garage.interfaces";
 import { deleteCar, selectCar } from "../../../../store/cars/cars.actions";
 import { SelectButtonComponent } from "../select-button/select-button.component";
 import { RemoveButtonComponent } from "../remove-button/remove-button.component";
+import { CommonModule } from "@angular/common";
+import { MoveService } from "../../../../services/move.service";
 
 @Component({
     selector: "app-car",
     standalone: true,
-    imports: [SelectButtonComponent, RemoveButtonComponent],
+    imports: [SelectButtonComponent, RemoveButtonComponent, CommonModule],
     templateUrl: "./car.component.html",
     styleUrl: "./car.component.scss",
 })
 export class CarComponent {
     @Input() car: Car | undefined;
     selectedCar: boolean = false;
+    isMoving: boolean = false;
+    errorMessage: string | null = null;
 
-    constructor(private store: Store) {}
+    constructor(
+        private store: Store,
+        private service: MoveService,
+    ) {}
 
     onRemove(id: number) {
         this.store.dispatch(deleteCar({ carID: id }));
@@ -32,7 +39,13 @@ export class CarComponent {
         }
     }
 
-    startMoving() {}
+    startMoving(car: Car) {
+        this.isMoving = true;
+        this.service.startMoving(car);
+    }
 
-    stopMoving() {}
+    stopMoving(car: Car) {
+        this.service.stopMoving(car);
+        this.isMoving = false;
+    }
 }

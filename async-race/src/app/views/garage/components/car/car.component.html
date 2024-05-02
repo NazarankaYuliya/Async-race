@@ -6,12 +6,17 @@
     </div>
 
     <div class="btn-container">
-        <button (click)="startMoving()">Start</button>
-        <button>Stop</button>
+        <button (click)="startMoving(car)" [disabled]="isMoving">Start</button>
+
+        <button (click)="stopMoving(car)" [disabled]="!isMoving">Stop</button>
     </div>
     <div class="race-container">
-        <div class="car" [style.backgroundColor]="car.color">Car</div>
-        {{ car.name }}
+
+        <div class="car" [attr.id]="car.id" [style.backgroundColor]="car.color">Car
+        </div>
+
+        <span class="car-name">{{ car.name }}</span>
+
     </div>
 
 </div>

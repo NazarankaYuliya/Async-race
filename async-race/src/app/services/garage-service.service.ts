@@ -1,6 +1,6 @@
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { catchError, map, Observable, throwError } from "rxjs";
 
 import { Car, DriveModeResponse, EngineStatusResponse } from "../models/garage.interfaces";
 
