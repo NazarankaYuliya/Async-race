@@ -1,1 +1,17 @@
-<p>winners works!</p>
+@if (winners$ | async ) {
+<div>
+    @for (winner of (winners$ | async); track $index) {
+    <div>
+        {{winner.id}}
+    </div>
+    }
+
+</div>
+
+}
+
+
+<div>Total Count: {{ totalWinners$ | async }}</div>
+
+<app-pagination [currentPage]="(currentPage$ | async) ?? 0" [totalPages]="totalPages"
+    (pageChange)="goToPage($event)"></app-pagination>

@@ -43,11 +43,14 @@ export class MoveService {
     stopMoving(car: Car) {
         this.cancelSubscriptions();
         if (car.id) {
-            this.service.startStopEngine(car.id, "stopped").subscribe();
-            const carElement = this.getCarElement(car);
-            if (carElement) {
-                carElement.classList.remove("moving");
-            }
+            this.service.startStopEngine(car.id, "stopped").subscribe((res: EngineStatusResponse) => {
+                if (res) {
+                    const carElement = this.getCarElement(car);
+                    if (carElement) {
+                        carElement.classList.remove("moving");
+                    }
+                }
+            });
         }
     }
 

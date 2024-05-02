@@ -28,18 +28,18 @@
 
 # Car Animation (50 points)
 
-- [ ] **Engine Control Buttons (10 points):** Place start/stop engine buttons near each car's image.
-- [ ] **Start Engine Animation (20 points):** User clicks to the engine start button -> UI is waiting for car's velocity answer -> animate the car and makes another request to drive. In case api returned 500 error car animation should be stopped.
-- [ ] **Stop Engine Animation (10 points):** User clicks to the engine stop button -> UI is waiting for answer for stopping engine -> car returned to it's initial place.
+- [x] **Engine Control Buttons (10 points):** Place start/stop engine buttons near each car's image.
+- [x] **Start Engine Animation (20 points):** User clicks to the engine start button -> UI is waiting for car's velocity answer -> animate the car and makes another request to drive. In case api returned 500 error car animation should be stopped.
+- [x] **Stop Engine Animation (10 points):** User clicks to the engine stop button -> UI is waiting for answer for stopping engine -> car returned to it's initial place.
 - [ ] **Button States (5 points):** Start engine button should be disabled in case car is already in driving mode. As well as stop engine button should be disabled when car is on it's initial place.
-- [ ] **Responsive Animation (5 points):** Ensure car animations are fluid and responsive on screens as small as 500px.
+- [x] **Responsive Animation (5 points):** Ensure car animations are fluid and responsive on screens as small as 500px.
 
 <br>
 
 # Race Animation (35 points)
 
-- [ ] **Start Race Button (15 points):** Implement a button to start the race for all cars on the current page.
-- [ ] **Reset Race Button (10 points):** Create a button to reset the race, returning all cars to their starting positions.
+- [x] **Start Race Button (15 points):** Implement a button to start the race for all cars on the current page.
+- [x] **Reset Race Button (10 points):** Create a button to reset the race, returning all cars to their starting positions.
 - [ ] **Winner Announcement (10 points):** After some car finishes first user should see the message contains car's name that shows which one has won.
       <br>
 
@@ -69,7 +69,7 @@
 
 # Bundling and Tooling (20 points)
 
-- [ ] **Use of Webpack or Similar (20 points):** Implement Webpack or another bundling tool to compile the project into a minimal set of files, ideally one HTML file, one JS file, and one CSS file. Ensure that the configuration enforces TypeScript strict type checking.
+- [x] **Use of Webpack or Similar (20 points):** Implement Webpack or another bundling tool to compile the project into a minimal set of files, ideally one HTML file, one JS file, and one CSS file. Ensure that the configuration enforces TypeScript strict type checking.
 
 <br>
 
@@ -79,7 +79,7 @@
 
 # Code Organization and Efficiency (15 points)
 
-- [ ] **Function Modularization (10 points):** Code should be organized into small, clearly named functions with specific purposes. Each function should not exceed 40 lines, reflecting strong typing and avoiding the use of magic numbers or strings.
+- [x] **Function Modularization (10 points):** Code should be organized into small, clearly named functions with specific purposes. Each function should not exceed 40 lines, reflecting strong typing and avoiding the use of magic numbers or strings.
 - [ ] **Code Duplication and Magic Numbers (5 points):** Minimize code duplication and maintain readability by avoiding the use of magic numbers or strings throughout the codebase.
 
 <br>

@@ -7,15 +7,22 @@ import { provideStore } from "@ngrx/store";
 
 import { routes } from "./app.routes";
 import { CarsEffects } from "./store/cars/cars.effects";
-import { CarsReducer } from "./store/cars/cars.reducer";
 import { createFormReducer, updateFormReducer } from "./store/inputs/inputs.reducer";
+import { winnersReducer } from "./store/winners/winners.reducer";
+import { carsReducer } from "./store/cars/cars.reducer";
+import { WinnersEffects } from "./store/winners/winners.effects";
 
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes),
         provideAnimationsAsync(),
         provideHttpClient(),
-        provideStore({ cars: CarsReducer, createForm: createFormReducer, updateForm: updateFormReducer }),
-        provideEffects([CarsEffects]),
+        provideStore({
+            cars: carsReducer,
+            createForm: createFormReducer,
+            updateForm: updateFormReducer,
+            winners: winnersReducer,
+        }),
+        provideEffects([CarsEffects, WinnersEffects]),
     ],
 };

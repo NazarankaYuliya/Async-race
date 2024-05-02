@@ -1,8 +1,9 @@
 <div class="wrapper">
+
     <div class="container">
         <div class="button-container">
-            <app-race-button [cars]="cars"></app-race-button>
-            <app-reset-button [cars]="cars"></app-reset-button>
+            <app-race-button [cars]="(cars$ | async) ?? []"></app-race-button>
+            <app-reset-button [cars]="(cars$ | async) ?? []"></app-reset-button>
             <div>
                 <app-create-car></app-create-car>
             </div>
@@ -13,13 +14,17 @@
         </div>
 
         <div class="car-container">
-            <app-cars-list [cars]="cars"></app-cars-list>
+            <app-cars-list [cars]="(cars$ | async) ?? []"></app-cars-list>
         </div>
 
         <div class="pagination-container">
-            <div>Garage ( {{ totalCars }} )</div>
-            <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+            <div>Garage ( {{ totalCars$ | async }} )</div>
+            <app-pagination [currentPage]="(currentPage$ | async) ?? 0" [totalPages]="totalPages"
                 (pageChange)="goToPage($event)"></app-pagination>
         </div>
     </div>
+
+
+
+
 </div>

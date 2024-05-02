@@ -1,9 +1,9 @@
 import { createReducer, on } from "@ngrx/store";
 
-import { loadCarsFail, loadCarsSuccess, selectCar } from "./cars.actions";
+import { loadCarsFail, loadCarsSuccess, selectCar, setPage } from "./cars.actions";
 import { carsState } from "./cars.state";
 
-const _carsReducer = createReducer(
+export const carsReducer = createReducer(
     carsState,
     on(loadCarsSuccess, (state, action) => ({
         ...state,
@@ -21,8 +21,8 @@ const _carsReducer = createReducer(
         ...state,
         selectedCar,
     })),
+    on(setPage, (state, { page }) => ({
+        ...state,
+        page,
+    })),
 );
-
-export function CarsReducer(state: any, action: any) {
-    return _carsReducer(state, action);
-}

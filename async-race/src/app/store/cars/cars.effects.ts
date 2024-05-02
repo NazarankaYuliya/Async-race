@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, EMPTY, map, merge, mergeMap, of } from "rxjs";
+import { catchError, EMPTY, map, merge, mergeMap, of, withLatestFrom } from "rxjs";
 
 import { GarageService } from "../../services/garage-service.service";
-import { PageSarviceService } from "../../services/page-sarvice.service";
 import {
     createCar,
     createCarSuccess,
@@ -15,20 +14,23 @@ import {
     updateCar,
     updateCarSuccess,
 } from "./cars.actions";
+import { Store, select } from "@ngrx/store";
+import { selectLimit, selectPage } from "./cars.selectors";
 
 @Injectable()
 export class CarsEffects {
     constructor(
         private action$: Actions,
         private service: GarageService,
-        private pageSarvice: PageSarviceService,
+        private store: Store,
     ) {}
 
     loadCars$ = createEffect(() =>
         this.action$.pipe(
             ofType(loadCars),
-            mergeMap((action) =>
-                this.service.getCars(action.page, action.pageSize).pipe(
+            withLatestFrom(this.store.pipe(select(selectPage)), this.store.pipe(select(selectLimit))),
+            mergeMap(([, page, limit]) =>
+                this.service.getCars(page, limit).pipe(
                     map((data) => loadCarsSuccess({ cars: data.cars || [], totalCount: data.totalCount })),
                     catchError((err) => of(loadCarsFail({ errorMessage: err.message }))),
                 ),
@@ -79,9 +81,7 @@ export class CarsEffects {
             this.action$.pipe(ofType(updateCarSuccess)),
         ).pipe(
             mergeMap(() => {
-                const currentPage = this.pageSarvice.getCurrentPage();
-                const pageSize = this.pageSarvice.getPageSize();
-                return of(loadCars({ page: currentPage, pageSize }));
+                return of(loadCars());
             }),
         ),
     );

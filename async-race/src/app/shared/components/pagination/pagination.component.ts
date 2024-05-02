@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { DEFAULT_PAGE } from "../../../../shared/constants";
 
 @Component({
     selector: "app-pagination",

@@ -32,9 +32,9 @@ export class GarageService {
         return this.http.post<Car>(url, carData);
     }
 
-    deleteCar(id: number): Observable<any> {
+    deleteCar(id: number): Observable<void> {
         const url = `${this.baseUrl}/garage/${id}`;
-        return this.http.delete<any>(url);
+        return this.http.delete<void>(url);
     }
 
     updateCar(id: number, carData: { name: string; color: string }): Observable<Car> {
