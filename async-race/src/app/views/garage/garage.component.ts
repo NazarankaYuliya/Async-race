@@ -1,19 +1,21 @@
+import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
 
-import { CarsListComponent } from "./components/cars-list/cars-list.component";
-import { CreateCarComponent } from "./components/create-car/create-car.component";
-import { UpdateCarComponent } from "./components/update-car/update-car.component";
 import { Car } from "../../models/garage.interfaces";
+import { PaginationComponent } from "../../shared/components/pagination/pagination.component";
 import { DEFAULT_PAGE } from "../../shared/constants";
 import { loadCars, setPage } from "../../store/cars/cars.actions";
-import { getCarsList, getTotalCount, selectLimit, selectPage } from "../../store/cars/cars.selectors";
+import {
+ getCarsList, getTotalCount, selectLimit, selectPage 
+} from "../../store/cars/cars.selectors";
+import { CarsListComponent } from "./components/cars-list/cars-list.component";
+import { CreateCarComponent } from "./components/create-car/create-car.component";
 import { GenerateRandomCarsComponent } from "./components/generate-random-cars/generate-random-cars.component";
-import { PaginationComponent } from "../../shared/components/pagination/pagination.component";
 import { RaceButtonComponent } from "./components/race-button/race-button.component";
 import { ResetButtonComponent } from "./components/reset-button/reset-button.component";
-import { Observable } from "rxjs";
-import { CommonModule } from "@angular/common";
+import { UpdateCarComponent } from "./components/update-car/update-car.component";
 
 @Component({
     selector: "app-garage",

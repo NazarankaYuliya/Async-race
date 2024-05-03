@@ -1,0 +1,16 @@
+<div class="winners-container">
+    <div class="table-header">
+        <div>Id</div>
+        <div>Car</div>
+        <div>Name</div>
+
+        <div>Wins</div>
+        <div>Best time (seconds)</div>
+    </div>
+
+    <div class="table-body">
+        @for (winner of winners; track $index) {
+            <app-winner [winner]="winner"></app-winner>
+        }
+    </div>
+</div>

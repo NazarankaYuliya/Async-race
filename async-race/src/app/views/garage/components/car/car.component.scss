@@ -1,14 +1,38 @@
 .car-container {
     display: flex;
     gap: 10px;
-    border-bottom: 1px solid;
-    padding: 15px;
+    background-color: black;
+    padding: 10px;
 }
 
 .btn-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.btn-container button {
+    font-size: 16px;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 1px solid #9d00ff;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn-container button:disabled {
+    border: 1px solid #762d2d;
+    cursor: not-allowed;
+}
+
+.btn-start {
+    border: none;
+}
+
+.btn-stop {
+    border: none;
 }
 
 .race-container {
@@ -19,24 +43,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    border-bottom: 2px dashed white;
 }
 
 .car {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     padding: 5px;
-    border: 1px solid;
-    border-radius: 50%;
     text-align: center;
 }
 
 .car-name {
+    height: 100%;
     color: gray;
     text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.start {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    color: #fd4203;
+    font-size: 30px;
+}
+
+.finish span {
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    color: #7ec61b;
+    font-size: 30px;
 }
 
 @keyframes moveCar {

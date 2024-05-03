@@ -1,7 +1,11 @@
 import { Injectable } from "@angular/core";
-import { GarageService } from "./garage-service.service";
+import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
+
 import { Car, EngineStatusResponse } from "../models/garage.interfaces";
-import { Observable, Subject, Subscription, take } from "rxjs";
+import { Winner } from "../models/winners.interfaces";
+import { createWinner } from "../store/winners/winners.actions";
+import { GarageService } from "./garage-service.service";
 
 @Injectable({
     providedIn: "root",
@@ -9,10 +13,12 @@ import { Observable, Subject, Subscription, take } from "rxjs";
 export class MoveService {
     private engineStartSubscription?: Subscription;
     private engineModeSwitchSubscription?: Subscription;
-    private animationFinished: boolean = false;
-    finishedCars: { car: Car; time: number }[] = [];
+    private isFirstCarArrived: boolean = false;
 
-    constructor(private service: GarageService) {}
+    constructor(
+        private service: GarageService,
+        private store: Store,
+    ) {}
 
     startMoving(car: Car) {
         if (car.id) {
@@ -24,7 +30,19 @@ export class MoveService {
                         this.animateCar(animationTimeInSeconds, car);
 
                         this.engineModeSwitchSubscription = this.service.switchEngineToDriveMode(car.id).subscribe(
-                            () => {},
+                            () => {
+                                if (!this.isFirstCarArrived) {
+                                    if (car.id) {
+                                        const newWinner: Winner = {
+                                            id: car.id,
+                                            wins: 1,
+                                            time: animationTimeInSeconds,
+                                        };
+                                        this.store.dispatch(createWinner({ winner: newWinner }));
+                                    }
+                                    this.isFirstCarArrived = true;
+                                }
+                            },
                             (error) => {
                                 if (error.status === 500) {
                                     this.pauseMoving(car);
@@ -52,21 +70,30 @@ export class MoveService {
                 }
             });
         }
+        this.isFirstCarArrived = false;
     }
 
     animateCar(animationTimeInSeconds: number, car: Car) {
         const carElement = this.getCarElement(car);
         if (carElement) {
-            carElement.style.animationDuration = animationTimeInSeconds + "s";
+            carElement.style.animationDuration = `${animationTimeInSeconds}s`;
             carElement.classList.add("moving");
 
-            carElement.addEventListener(
-                "animationend",
-                () => {
-                    this.finishedCars.push({ car: car, time: animationTimeInSeconds });
-                },
-                { once: true },
-            );
+            // carElement.addEventListener(
+            //     "animationend",
+            //     () => {
+            //         //this.finishedCars.push({ car: car, time: animationTimeInSeconds });
+            //         if (car.id) {
+            //             let newWinner: Winner = {
+            //                 id: car.id,
+            //                 wins: 1,
+            //                 time: animationTimeInSeconds,
+            //             };
+            //             this.store.dispatch(createWinner({ winner: newWinner }));
+            //         }
+            //     },
+            //     { once: true },
+            // );
         }
     }
 

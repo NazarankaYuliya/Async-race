@@ -1,17 +1,19 @@
+import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { Car } from "../../../../models/garage.interfaces";
-import { deleteCar, selectCar } from "../../../../store/cars/cars.actions";
-import { SelectButtonComponent } from "../select-button/select-button.component";
-import { RemoveButtonComponent } from "../remove-button/remove-button.component";
-import { CommonModule } from "@angular/common";
 import { MoveService } from "../../../../services/move.service";
+import { CarImageComponent } from "../../../../shared/components/car-image/car-image.component";
+import { deleteCar, selectCar } from "../../../../store/cars/cars.actions";
+import { deleteWinner } from "../../../../store/winners/winners.actions";
+import { RemoveButtonComponent } from "../remove-button/remove-button.component";
+import { SelectButtonComponent } from "../select-button/select-button.component";
 
 @Component({
     selector: "app-car",
     standalone: true,
-    imports: [SelectButtonComponent, RemoveButtonComponent, CommonModule],
+    imports: [SelectButtonComponent, RemoveButtonComponent, CommonModule, CarImageComponent],
     templateUrl: "./car.component.html",
     styleUrl: "./car.component.scss",
 })
@@ -28,6 +30,7 @@ export class CarComponent {
 
     onRemove(id: number) {
         this.store.dispatch(deleteCar({ carID: id }));
+        this.store.dispatch(deleteWinner({ winnerID: id }));
     }
 
     onSelect(car: Car) {

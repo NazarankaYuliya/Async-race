@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RemoveButtonComponent } from "./remove-button.component";
+import { CarImageComponent } from "./car-image.component";
 
-describe("RemoveButtonComponent", () => {
-    let component: RemoveButtonComponent;
-    let fixture: ComponentFixture<RemoveButtonComponent>;
+describe("CarImageComponent", () => {
+    let component: CarImageComponent;
+    let fixture: ComponentFixture<CarImageComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [RemoveButtonComponent],
+            imports: [CarImageComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(RemoveButtonComponent);
+        fixture = TestBed.createComponent(CarImageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

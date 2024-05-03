@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, map } from "rxjs";
+import { map, Observable } from "rxjs";
 
 import { Winner } from "../models/winners.interfaces";
 
@@ -18,7 +18,7 @@ export class WinnersService {
         sort: string,
         order: string,
     ): Observable<{ winners: Winner[] | null; totalCount: string }> {
-        let url = `${this.baseUrl}/winners?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`;
+        const url = `${this.baseUrl}/winners?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`;
         return this.http.get<Winner[]>(url, { observe: "response" }).pipe(
             map((response: HttpResponse<Winner[]>) => {
                 const totalCount = response.headers.get("X-Total-Count");

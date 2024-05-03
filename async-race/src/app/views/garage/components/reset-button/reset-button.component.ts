@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+
 import { Car } from "../../../../models/garage.interfaces";
 import { MoveService } from "../../../../services/move.service";
 

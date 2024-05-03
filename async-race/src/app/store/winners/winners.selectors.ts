@@ -1,4 +1,5 @@
-import { createSelector, createFeatureSelector } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+
 import { WinnersState } from "./winners.state";
 
 export const selectWinnersState = createFeatureSelector<WinnersState>("winners");

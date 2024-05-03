@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RemoveButtonComponent } from "./remove-button.component";
+import { WinnersListComponent } from "./winners-list.component";
 
-describe("RemoveButtonComponent", () => {
-    let component: RemoveButtonComponent;
-    let fixture: ComponentFixture<RemoveButtonComponent>;
+describe("WinnersListComponent", () => {
+    let component: WinnersListComponent;
+    let fixture: ComponentFixture<WinnersListComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [RemoveButtonComponent],
+            imports: [WinnersListComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(RemoveButtonComponent);
+        fixture = TestBed.createComponent(WinnersListComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

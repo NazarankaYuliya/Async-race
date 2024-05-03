@@ -1,27 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { Winner } from "../../models/winners.interfaces";
-import { Store, select } from "@ngrx/store";
-import {
-    selectError,
-    selectLimit,
-    selectLoading,
-    selectOrder,
-    selectPage,
-    selectSort,
-    selectTotalCount,
-    selectWinners,
-} from "../../store/winners/winners.selectors";
 import { CommonModule } from "@angular/common";
-import { WinnersService } from "../../services/winners-service.service";
-import { loadWinners, setPage } from "../../store/winners/winners.actions";
-import { DEFAULT_PAGE } from "../../shared/constants";
+import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+
+import { Winner } from "../../models/winners.interfaces";
 import { PaginationComponent } from "../../shared/components/pagination/pagination.component";
+import { DEFAULT_PAGE } from "../../shared/constants";
+import { loadWinners, setPage } from "../../store/winners/winners.actions";
+import {
+ selectLimit, selectPage, selectTotalCount, selectWinners 
+} from "../../store/winners/winners.selectors";
+import { WinnersListComponent } from "./components/winners-list/winners-list.component";
 
 @Component({
     selector: "app-winners",
     standalone: true,
-    imports: [CommonModule, PaginationComponent],
+    imports: [CommonModule, PaginationComponent, WinnersListComponent],
     templateUrl: "./winners.component.html",
     styleUrl: "./winners.component.scss",
 })
