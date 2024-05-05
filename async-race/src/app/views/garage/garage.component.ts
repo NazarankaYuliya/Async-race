@@ -7,13 +7,14 @@ import { Car } from "../../models/garage.interfaces";
 import { PaginationComponent } from "../../shared/components/pagination/pagination.component";
 import { DEFAULT_PAGE } from "../../shared/constants";
 import { loadCars, setPage } from "../../store/cars/cars.actions";
-import { getCarsList, getTotalCount, selectLimit, selectPage } from "../../store/cars/cars.selectors";
+import { getCarsList, getTotalCount, selectIsMoving, selectLimit, selectPage } from "../../store/cars/cars.selectors";
 import { CarsListComponent } from "./components/cars-list/cars-list.component";
 import { CreateCarComponent } from "./components/create-car/create-car.component";
 import { GenerateRandomCarsComponent } from "./components/generate-random-cars/generate-random-cars.component";
 import { RaceButtonComponent } from "./components/race-button/race-button.component";
 import { ResetButtonComponent } from "./components/reset-button/reset-button.component";
 import { UpdateCarComponent } from "./components/update-car/update-car.component";
+import { MoveService } from "../../services/move.service";
 
 @Component({
     selector: "app-garage",
@@ -38,7 +39,10 @@ export class GarageComponent implements OnInit {
     pageSize$!: Observable<number>;
     totalPages!: number;
 
-    constructor(private store: Store) {}
+    constructor(
+        private store: Store,
+        private moveService: MoveService,
+    ) {}
 
     ngOnInit(): void {
         this.getCars();
@@ -53,6 +57,8 @@ export class GarageComponent implements OnInit {
         this.totalCars$.subscribe((count) => {
             this.calculateTotalPages(+count);
         });
+
+        this.cars$.subscribe((cars) => this.moveService.resetMovingForAll(cars));
     }
 
     calculateTotalPages(totalCars: number): void {

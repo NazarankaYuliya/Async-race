@@ -1,21 +1,21 @@
 @if (car && car.id) {
-    <div class="car-container">
-        <div class="btn-container">
-            <app-select-button [selected]="selectedCar" (selectionChanged)="onSelect(car)"></app-select-button>
-            <app-remove-button (delete)="onRemove(car.id)"></app-remove-button>
-        </div>
-
-        <div class="btn-container">
-            <button class="btn-start" (click)="startMoving(car)" [disabled]="isMoving$ | async">A</button>
-
-            <button class="btn-stop" (click)="stopMoving(car)" [disabled]="(isMoving$ | async) === false">B</button>
-        </div>
-        <div class="race-container">
-            <div class="car" [attr.id]="car.id"><app-car-image [car]="car"></app-car-image>></div>
-            <div class="start"><span>&#10296;</span></div>
-            <div class="car-name">{{ car.name }}</div>
-
-            <div class="finish"><span>&#9983;</span></div>
-        </div>
+<div class="car-container">
+    <div class="btn-container">
+        <app-select-button [selected]="selectedCar" (selectionChanged)="onSelect(car)"></app-select-button>
+        <app-remove-button (delete)="onRemove(car.id)"></app-remove-button>
     </div>
+
+    <div class="btn-container">
+        <button class="btn-start" (click)="startMoving(car)" [disabled]="isMoving">A</button>
+
+        <button class="btn-stop" (click)="stopMoving(car)" [disabled]="!isMoving">B</button>
+    </div>
+    <div class="race-container">
+        <div class="car" [attr.id]="car.id"><app-car-image [car]="car"></app-car-image>></div>
+        <div class="start"><span>&#10296;</span></div>
+        <div class="car-name">{{ car.name }}</div>
+
+        <div class="finish"><span>&#9983;</span></div>
+    </div>
+</div>
 }

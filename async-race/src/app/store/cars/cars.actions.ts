@@ -19,6 +19,6 @@ export const deleteCar = createAction("[Car] delete car", props<{ carID: number 
 export const deleteCarSuccess = createAction("[Car] delete car success");
 
 export const selectCar = createAction("[Car] select car", props<{ selectedCar: Car | null }>());
-export const isMoving = createAction("[Car] moving car", props<{ isMoving: true | false }>());
+export const isMoving = createAction("[Car] moving car", props<{ isMoving: boolean }>());
 
 export const setPage = createAction("[Cars] Set Page", props<{ page: number }>());
