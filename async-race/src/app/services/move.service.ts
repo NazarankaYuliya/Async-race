@@ -4,8 +4,9 @@ import { Subscription } from "rxjs";
 
 import { Car, EngineStatusResponse } from "../models/garage.interfaces";
 import { Winner } from "../models/winners.interfaces";
-import { createWinner } from "../store/winners/winners.actions";
+import { createWinner, updateWinner } from "../store/winners/winners.actions";
 import { GarageService } from "./garage-service.service";
+import { WinnersService } from "./winners-service.service";
 
 @Injectable({
     providedIn: "root",
@@ -14,51 +15,102 @@ export class MoveService {
     private engineStartSubscription?: Subscription;
     private engineModeSwitchSubscription?: Subscription;
     private isFirstCarArrived: boolean = false;
+    private saveAsWinner: boolean = false;
 
     constructor(
         private service: GarageService,
+        private winnersService: WinnersService,
         private store: Store,
     ) {}
 
     startMoving(car: Car) {
-        if (car.id) {
-            this.engineStartSubscription = this.service
-                .startStopEngine(car.id, "started")
-                .subscribe((res: EngineStatusResponse) => {
-                    if (res && car.id) {
-                        const animationTimeInSeconds = this.getCarSpeed(res);
-                        this.animateCar(animationTimeInSeconds, car);
+        this.saveAsWinner = false;
+        this.startEngine(car).then(() => {
+            setTimeout(() => {
+                this.resetMoving(car);
+            }, 2000);
+        });
+    }
 
-                        this.engineModeSwitchSubscription = this.service.switchEngineToDriveMode(car.id).subscribe(
-                            () => {
-                                if (!this.isFirstCarArrived) {
-                                    if (car.id) {
-                                        const newWinner: Winner = {
-                                            id: car.id,
-                                            wins: 1,
-                                            time: animationTimeInSeconds,
-                                        };
-                                        this.store.dispatch(createWinner({ winner: newWinner }));
-                                    }
-                                    this.isFirstCarArrived = true;
-                                }
-                            },
-                            (error) => {
-                                if (error.status === 500) {
-                                    this.pauseMoving(car);
-                                }
-                            },
-                        );
+    startEngine(car: Car) {
+        return new Promise<void>((resolve) => {
+            if (car.id) {
+                this.engineStartSubscription = this.service
+                    .startStopEngine(car.id, "started")
+                    .subscribe((res: EngineStatusResponse) => {
+                        if (res && car.id) {
+                            const animationTimeInSeconds = this.getCarSpeed(res);
+                            this.animateCar(animationTimeInSeconds, car);
+                            this.switchEngineToDriveMode(car, animationTimeInSeconds, this.saveAsWinner);
+                            setTimeout(() => {
+                                resolve();
+                            }, animationTimeInSeconds * 1000);
+                        }
+                    });
+            }
+        });
+    }
+
+    switchEngineToDriveMode(car: Car, animationTimeInSeconds: number, callHandleFirstCarArrival: boolean) {
+        if (car.id) {
+            this.engineModeSwitchSubscription = this.service.switchEngineToDriveMode(car.id).subscribe(
+                () => {
+                    if (callHandleFirstCarArrival) {
+                        this.handleFirstCarArrival(car, animationTimeInSeconds);
                     }
-                });
+                },
+                (error) => {
+                    if (error.status === 500) {
+                        this.pauseMoving(car);
+                    }
+                },
+            );
+        }
+    }
+
+    handleFirstCarArrival(car: Car, animationTimeInSeconds: number) {
+        if (!this.isFirstCarArrived) {
+            if (car.id) {
+                this.winnersService.getWinner(car.id).subscribe(
+                    (winner) => {
+                        const newWinner = {
+                            wins: winner.wins + 1,
+                            time: animationTimeInSeconds,
+                        };
+                        this.store.dispatch(updateWinner({ winnerID: winner.id, winnerData: newWinner }));
+                    },
+                    () => {
+                        if (car.id) {
+                            const newWinner: Winner = {
+                                id: car.id,
+                                wins: 1,
+                                time: animationTimeInSeconds,
+                            };
+                            this.store.dispatch(createWinner({ winner: newWinner }));
+                        }
+                    },
+                );
+
+                this.isFirstCarArrived = true;
+            }
         }
     }
 
     startRace(cars: Car[]) {
-        cars.forEach((car) => this.startMoving(car));
+        this.saveAsWinner = true;
+        const promises = cars.map((car) => this.startEngine(car));
+        Promise.all(promises).then(() => {
+            setTimeout(() => {
+                this.resetMovingForAll(cars);
+            }, 2000);
+        });
     }
 
-    stopMoving(car: Car) {
+    resetMovingForAll(cars: Car[]) {
+        cars.forEach((car) => this.resetMoving(car));
+    }
+
+    resetMoving(car: Car) {
         this.cancelSubscriptions();
         if (car.id) {
             this.service.startStopEngine(car.id, "stopped").subscribe((res: EngineStatusResponse) => {
@@ -78,22 +130,6 @@ export class MoveService {
         if (carElement) {
             carElement.style.animationDuration = `${animationTimeInSeconds}s`;
             carElement.classList.add("moving");
-
-            // carElement.addEventListener(
-            //     "animationend",
-            //     () => {
-            //         //this.finishedCars.push({ car: car, time: animationTimeInSeconds });
-            //         if (car.id) {
-            //             let newWinner: Winner = {
-            //                 id: car.id,
-            //                 wins: 1,
-            //                 time: animationTimeInSeconds,
-            //             };
-            //             this.store.dispatch(createWinner({ winner: newWinner }));
-            //         }
-            //     },
-            //     { once: true },
-            // );
         }
     }
 

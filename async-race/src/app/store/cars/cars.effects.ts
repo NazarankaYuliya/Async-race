@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { select, Store } from "@ngrx/store";
-import {
- catchError, EMPTY, map, merge, mergeMap, of, withLatestFrom 
-} from "rxjs";
+import { catchError, EMPTY, map, merge, mergeMap, of, withLatestFrom } from "rxjs";
 
 import { GarageService } from "../../services/garage-service.service";
 import {
@@ -82,5 +80,5 @@ export class CarsEffects {
         this.action$.pipe(ofType(deleteCarSuccess)),
         this.action$.pipe(ofType(updateCarSuccess)),
     ).pipe(mergeMap(() => of(loadCars()))),
-    ),);
+    );
 }

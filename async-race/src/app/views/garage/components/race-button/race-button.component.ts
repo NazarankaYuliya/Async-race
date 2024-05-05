@@ -1,6 +1,4 @@
-import {
- Component, Input, OnDestroy, OnInit 
-} from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 
 import { Car } from "../../../../models/garage.interfaces";
 import { MoveService } from "../../../../services/move.service";

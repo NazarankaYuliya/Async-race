@@ -7,6 +7,7 @@ export interface CarsModel {
     limit: number;
     errorMessage: string;
     selectedCar: Car | null;
+    isMoving: boolean;
 }
 
 export const carsState: CarsModel = {
@@ -16,4 +17,5 @@ export const carsState: CarsModel = {
     limit: 7,
     errorMessage: "",
     selectedCar: null,
+    isMoving: false,
 };

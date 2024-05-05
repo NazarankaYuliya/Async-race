@@ -2,9 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { select, Store } from "@ngrx/store";
 import { EMPTY, merge, of } from "rxjs";
-import {
- catchError, map, mergeMap, withLatestFrom 
-} from "rxjs/operators";
+import { catchError, map, mergeMap, withLatestFrom } from "rxjs/operators";
 
 import { GarageService } from "../../services/garage-service.service";
 import { WinnersService } from "../../services/winners-service.service";
@@ -19,9 +17,7 @@ import {
     updateWinner,
     updateWinnerSuccess,
 } from "./winners.actions";
-import {
- selectLimit, selectOrder, selectPage, selectSort 
-} from "./winners.selectors";
+import { selectLimit, selectOrder, selectPage, selectSort } from "./winners.selectors";
 
 @Injectable()
 export class WinnersEffects {
@@ -94,5 +90,5 @@ export class WinnersEffects {
         this.action$.pipe(ofType(deleteWinnerSuccess)),
         this.action$.pipe(ofType(updateWinnerSuccess)),
     ).pipe(mergeMap(() => of(loadWinners()))),
-    ),);
+    );
 }

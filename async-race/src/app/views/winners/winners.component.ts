@@ -7,9 +7,7 @@ import { Winner } from "../../models/winners.interfaces";
 import { PaginationComponent } from "../../shared/components/pagination/pagination.component";
 import { DEFAULT_PAGE } from "../../shared/constants";
 import { loadWinners, setPage } from "../../store/winners/winners.actions";
-import {
- selectLimit, selectPage, selectTotalCount, selectWinners 
-} from "../../store/winners/winners.selectors";
+import { selectLimit, selectPage, selectTotalCount, selectWinners } from "../../store/winners/winners.selectors";
 import { WinnersListComponent } from "./components/winners-list/winners-list.component";
 
 @Component({

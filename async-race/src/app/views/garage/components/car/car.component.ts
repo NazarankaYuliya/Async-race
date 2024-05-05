@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { Observable, of } from "rxjs";
 
 import { Car } from "../../../../models/garage.interfaces";
 import { MoveService } from "../../../../services/move.service";
@@ -20,7 +21,7 @@ import { SelectButtonComponent } from "../select-button/select-button.component"
 export class CarComponent {
     @Input() car: Car | undefined;
     selectedCar: boolean = false;
-    isMoving: boolean = false;
+    isMoving$: Observable<boolean> = of(false);
     errorMessage: string | null = null;
 
     constructor(
@@ -43,12 +44,10 @@ export class CarComponent {
     }
 
     startMoving(car: Car) {
-        this.isMoving = true;
         this.service.startMoving(car);
     }
 
     stopMoving(car: Car) {
-        this.service.stopMoving(car);
-        this.isMoving = false;
+        this.service.resetMoving(car);
     }
 }

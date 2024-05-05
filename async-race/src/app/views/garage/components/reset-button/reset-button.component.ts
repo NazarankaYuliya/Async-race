@@ -15,8 +15,6 @@ export class ResetButtonComponent {
     constructor(private service: MoveService) {}
 
     resetRace() {
-        this.cars.forEach((car) => {
-            this.service.stopMoving(car);
-        });
+        this.service.resetMovingForAll(this.cars);
     }
 }

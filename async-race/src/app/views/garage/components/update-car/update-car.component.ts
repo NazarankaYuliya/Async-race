@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import {
- FormBuilder, FormGroup, ReactiveFormsModule, Validators 
-} from "@angular/forms";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
 import { updateCar } from "../../../../store/cars/cars.actions";

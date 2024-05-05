@@ -6,9 +6,9 @@
         </div>
 
         <div class="btn-container">
-            <button class="btn-start" (click)="startMoving(car)" [disabled]="isMoving">A</button>
+            <button class="btn-start" (click)="startMoving(car)" [disabled]="isMoving$ | async">A</button>
 
-            <button class="btn-stop" (click)="stopMoving(car)" [disabled]="!isMoving">B</button>
+            <button class="btn-stop" (click)="stopMoving(car)" [disabled]="(isMoving$ | async) === false">B</button>
         </div>
         <div class="race-container">
             <div class="car" [attr.id]="car.id"><app-car-image [car]="car"></app-car-image>></div>

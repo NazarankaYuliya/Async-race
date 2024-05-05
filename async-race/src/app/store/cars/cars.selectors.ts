@@ -10,5 +10,6 @@ export const getTotalCount = createSelector(getCarsState, (state) => state.total
 export const getSelectedCar = createSelector(getCarsState, (state) => state.selectedCar);
 
 export const selectPage = createSelector(getCarsState, (state) => state.page);
+export const selectIsMoving = createSelector(getCarsState, (state) => state.isMoving);
 
 export const selectLimit = createSelector(getCarsState, (state) => state.limit);
