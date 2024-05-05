@@ -4,13 +4,13 @@
         <div>Car</div>
         <div>Name</div>
 
-        <div>Wins</div>
-        <div>Best time (seconds)</div>
+        <div (click)="sortWins()">Wins</div>
+        <div (click)="sortTime()">Best time (seconds)</div>
     </div>
 
     <div class="table-body">
         @for (winner of winners; track $index) {
-            <app-winner [winner]="winner"></app-winner>
+        <app-winner [winner]="winner"></app-winner>
         }
     </div>
 </div>
