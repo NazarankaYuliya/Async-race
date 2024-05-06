@@ -1,0 +1,33 @@
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Car } from '../../../../models/garage.interfaces';
+import { MoveService } from '../../../../services/move.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectIsMoving } from '../../../../store/cars/cars.selectors';
+import { CommonModule } from '@angular/common';
+
+@Component({
+    selector: 'app-reset-button',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './reset-button.component.html',
+    styleUrl: './reset-button.component.scss',
+})
+export class ResetButtonComponent implements OnInit {
+    @Input() cars: Car[] = [];
+    isMoving$!: Observable<boolean>;
+
+    constructor(
+        private service: MoveService,
+        private store: Store,
+    ) {}
+
+    ngOnInit(): void {
+        this.isMoving$ = this.store.select(selectIsMoving);
+    }
+
+    resetRace() {
+        this.service.resetMovingForAll(this.cars);
+    }
+}

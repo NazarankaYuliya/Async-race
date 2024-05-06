@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <div class="winners-container">
+        <app-winners-list [winners]="(winners$ | async) ?? []" (sortEvent)="sort($event)"></app-winners-list>
+    </div>
+    <div class="pagination-container">
+        <div>Winners ({{ totalWinners$ | async }})</div>
+        <app-pagination [currentPage]="(currentPage$ | async) ?? 0" [totalPages]="totalPages"
+            (pageChange)="goToPage($event)"></app-pagination>
+    </div>
+</div>

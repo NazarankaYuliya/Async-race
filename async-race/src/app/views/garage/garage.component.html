@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="buttons-container">
+            <div class="race-buttons">
+                <app-race-button
+                    [cars]="(cars$ | async) ?? []"
+                ></app-race-button>
+                <app-reset-button
+                    [cars]="(cars$ | async) ?? []"
+                ></app-reset-button>
+            </div>
+            <div class="change-car-buttons">
+                <app-create-car></app-create-car>
+                <app-update-car></app-update-car>
+            </div>
+
+            <app-generate-random-cars></app-generate-random-cars>
+        </div>
+
+        <div class="car-container">
+            <app-cars-list [cars]="(cars$ | async) ?? []"></app-cars-list>
+        </div>
+
+        <div class="pagination-container">
+            <div>Garage ( {{ totalCars$ | async }} )</div>
+            <app-pagination
+                [currentPage]="(currentPage$ | async) ?? 0"
+                [totalPages]="totalPages"
+                (pageChange)="goToPage($event)"
+            ></app-pagination>
+        </div>
+    </div>
+</div>
