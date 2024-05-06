@@ -1,5 +1,12 @@
 export const DEFAULT_PAGE: number = 1;
+export const ONE_PAGE: number = 1;
+export const ONE: number = 1;
 export const DEFAULT_PAGE_SIZE: number = 7;
 export const DEFAULT_NUMBER_OF_NEW_CARS: number = 100;
 export const ZERO: number = 0;
 export const MAX_COLOR_VALUE: number = 256;
+export const SERVER_ERROR_CODE: number = 500;
+export const DEFAULT_WINS: number = 1;
+export const SECONDS_IN_ONE_KILOMETER = 1000;
+export const HUNDRED: number = 100;
+export const MODAL_CLOSE_TIMEOUT: number = 4000;

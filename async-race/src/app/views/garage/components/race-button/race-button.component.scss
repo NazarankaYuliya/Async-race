@@ -9,3 +9,8 @@ button {
     border: 1px solid #35d22d;
     border-radius: 5px;
 }
+
+button:disabled {
+    border: 1px solid #d22d2d;
+    cursor: not-allowed;
+}

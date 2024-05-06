@@ -1,7 +1,15 @@
 <div class="pagination">
-    <button [disabled]="currentPage === 1" (click)="goToFirstPage()">&lt;&lt;</button>
-    <button [disabled]="currentPage === 1" (click)="goToPreviousPage()">&lt;</button>
+    <button [disabled]="currentPage === 1" (click)="goToFirstPage()">
+        &lt;&lt;
+    </button>
+    <button [disabled]="currentPage === 1" (click)="goToPreviousPage()">
+        &lt;
+    </button>
     <span>{{ currentPage }} / {{ totalPages }}</span>
-    <button [disabled]="currentPage === totalPages" (click)="goToNextPage()">></button>
-    <button [disabled]="currentPage === totalPages" (click)="goToLastPage()">>></button>
+    <button [disabled]="currentPage === totalPages" (click)="goToNextPage()">
+        >
+    </button>
+    <button [disabled]="currentPage === totalPages" (click)="goToLastPage()">
+        >>
+    </button>
 </div>

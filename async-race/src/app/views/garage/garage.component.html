@@ -2,8 +2,12 @@
     <div class="container">
         <div class="buttons-container">
             <div class="race-buttons">
-                <app-race-button [cars]="(cars$ | async) ?? []"></app-race-button>
-                <app-reset-button [cars]="(cars$ | async) ?? []"></app-reset-button>
+                <app-race-button
+                    [cars]="(cars$ | async) ?? []"
+                ></app-race-button>
+                <app-reset-button
+                    [cars]="(cars$ | async) ?? []"
+                ></app-reset-button>
             </div>
             <div class="change-car-buttons">
                 <app-create-car></app-create-car>

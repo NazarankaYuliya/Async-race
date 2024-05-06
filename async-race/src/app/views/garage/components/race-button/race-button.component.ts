@@ -1,23 +1,31 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Car } from "../../../../models/garage.interfaces";
-import { MoveService } from "../../../../services/move.service";
+import { Car } from '../../../../models/garage.interfaces';
+import { MoveService } from '../../../../services/move.service';
+import { Store } from '@ngrx/store';
+import { selectIsMoving } from '../../../../store/cars/cars.selectors';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: "app-race-button",
+    selector: 'app-race-button',
     standalone: true,
-    imports: [],
-    templateUrl: "./race-button.component.html",
-    styleUrl: "./race-button.component.scss",
+    imports: [CommonModule],
+    templateUrl: './race-button.component.html',
+    styleUrl: './race-button.component.scss',
 })
-export class RaceButtonComponent implements OnInit, OnDestroy {
+export class RaceButtonComponent implements OnInit {
     @Input() cars: Car[] = [];
+    isMoving$!: Observable<boolean>;
 
-    constructor(private service: MoveService) {}
+    constructor(
+        private service: MoveService,
+        private store: Store,
+    ) {}
 
-    ngOnInit(): void {}
-
-    ngOnDestroy() {}
+    ngOnInit(): void {
+        this.isMoving$ = this.store.select(selectIsMoving);
+    }
 
     startRace() {
         this.service.startRace(this.cars);

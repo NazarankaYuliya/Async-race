@@ -14,14 +14,14 @@ export interface UpdateFormState {
 
 export const initialCreateFormState: CreateFormState = {
     createCarForm: {
-        name: "",
-        color: "#000000",
+        name: '',
+        color: '#000000',
     },
 };
 
 export const initialUpdateFormState: UpdateFormState = {
     updateCarForm: {
-        name: "",
-        color: "#000000",
+        name: '',
+        color: '#000000',
     },
 };

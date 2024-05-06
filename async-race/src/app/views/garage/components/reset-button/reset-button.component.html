@@ -1,1 +1,1 @@
-<button (click)="resetRace()">Reset</button>
+<button (click)="resetRace()" [disabled]="(isMoving$ |async) === false">Reset</button>

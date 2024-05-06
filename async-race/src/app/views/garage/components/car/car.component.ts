@@ -1,28 +1,36 @@
-import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { Observable, of } from "rxjs";
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { Car } from "../../../../models/garage.interfaces";
-import { MoveService } from "../../../../services/move.service";
-import { CarImageComponent } from "../../../../shared/components/car-image/car-image.component";
-import { deleteCar, isMoving, selectCar } from "../../../../store/cars/cars.actions";
-import { deleteWinner } from "../../../../store/winners/winners.actions";
-import { RemoveButtonComponent } from "../remove-button/remove-button.component";
-import { SelectButtonComponent } from "../select-button/select-button.component";
-import { selectIsMoving } from "../../../../store/cars/cars.selectors";
+import { Car } from '../../../../models/garage.interfaces';
+import { MoveService } from '../../../../services/move.service';
+import { CarImageComponent } from '../../../../shared/components/car-image/car-image.component';
+import { deleteCar, selectCar } from '../../../../store/cars/cars.actions';
+import { selectIsMoving } from '../../../../store/cars/cars.selectors';
+import { deleteWinner } from '../../../../store/winners/winners.actions';
+import { RemoveButtonComponent } from '../remove-button/remove-button.component';
+import { SelectButtonComponent } from '../select-button/select-button.component';
+import { Observable } from 'rxjs';
 
 @Component({
-    selector: "app-car",
+    selector: 'app-car',
     standalone: true,
-    imports: [SelectButtonComponent, RemoveButtonComponent, CommonModule, CarImageComponent],
-    templateUrl: "./car.component.html",
-    styleUrl: "./car.component.scss",
+    imports: [
+        SelectButtonComponent,
+        RemoveButtonComponent,
+        CommonModule,
+        CarImageComponent,
+    ],
+    templateUrl: './car.component.html',
+    styleUrl: './car.component.scss',
 })
 export class CarComponent implements OnInit {
     @Input() car: Car | undefined;
+
     selectedCar: boolean = false;
-    isMoving!: boolean;
+
+    isMoving$!: Observable<boolean>;
+
     errorMessage: string | null = null;
 
     constructor(
@@ -31,7 +39,7 @@ export class CarComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.store.select(selectIsMoving).subscribe((res) => (this.isMoving = res));
+        this.isMoving$ = this.store.select(selectIsMoving);
     }
 
     onRemove(id: number) {

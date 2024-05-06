@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemoveButtonComponent } from "./remove-button.component";
+import { RemoveButtonComponent } from './remove-button.component';
 
-describe("RemoveButtonComponent", () => {
+describe('RemoveButtonComponent', () => {
     let component: RemoveButtonComponent;
     let fixture: ComponentFixture<RemoveButtonComponent>;
 
@@ -16,7 +16,7 @@ describe("RemoveButtonComponent", () => {
         fixture.detectChanges();
     });
 
-    it("should create", () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });

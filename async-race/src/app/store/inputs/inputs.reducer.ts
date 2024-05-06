@@ -1,7 +1,7 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { updateCreateCarForm, updateUpdateCarForm } from "./inputs.action";
-import { initialCreateFormState, initialUpdateFormState } from "./inputs.state";
+import { updateCreateCarForm, updateUpdateCarForm } from './inputs.action';
+import { initialCreateFormState, initialUpdateFormState } from './inputs.state';
 
 export const createFormReducer = createReducer(
     initialCreateFormState,

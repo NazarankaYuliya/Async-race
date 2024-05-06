@@ -1,7 +1,13 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { loadWinnersFail, loadWinnersSuccess, setOrder, setPage, setSort } from "./winners.actions";
-import { winnersState } from "./winners.state";
+import {
+    loadWinnersFail,
+    loadWinnersSuccess,
+    setOrder,
+    setPage,
+    setSort,
+} from './winners.actions';
+import { winnersState } from './winners.state';
 
 export const winnersReducer = createReducer(
     winnersState,
@@ -10,7 +16,7 @@ export const winnersReducer = createReducer(
         winners,
         totalCount,
         loading: false,
-        error: "",
+        error: '',
     })),
     on(loadWinnersFail, (state, { error }) => ({
         ...state,

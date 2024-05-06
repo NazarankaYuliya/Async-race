@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WinnerComponent } from "./winner.component";
+import { WinnerComponent } from './winner.component';
 
-describe("WinnerComponent", () => {
+describe('WinnerComponent', () => {
     let component: WinnerComponent;
     let fixture: ComponentFixture<WinnerComponent>;
 
@@ -16,7 +16,7 @@ describe("WinnerComponent", () => {
         fixture.detectChanges();
     });
 
-    it("should create", () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });

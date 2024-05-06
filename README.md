@@ -1,6 +1,8 @@
 # Async-race
 
-# Score: 320
+# Deployment link: [Async race](https://nazarankayuliya.github.io/Async-race/garage)
+
+# Score: 370
 
 # Basic Structure (85 points)
 
@@ -40,15 +42,15 @@
 
 - [x] **Start Race Button (15 points):** Implement a button to start the race for all cars on the current page.
 - [x] **Reset Race Button (10 points):** Create a button to reset the race, returning all cars to their starting positions.
-- [ ] **Winner Announcement (10 points):** After some car finishes first user should see the message contains car's name that shows which one has won.
+- [x] **Winner Announcement (10 points):** After some car finishes first user should see the message contains car's name that shows which one has won.
       <br>
 
 # Winners View (45 points)
 
 - [x] **Display Winners (15 points):** After some car wins it should be displayed at the "Winners view" table.
 - [x] **Pagination for Winners (10 points):** Implement pagination for the "Winners" view, with 10 winners per page.
-- [ ] **Winners Table (10 points):** The table should include columns for the car's №, image, name, number of wins, and best time in seconds. If the same car wins more than once the number of wins should be incremented while best time should be saved only if it's better than the stored one.
-- [ ] **Sorting Functionality (10 points):** Allow users to sort the table by the number of wins and best time, in ascending or descending order.
+- [x] **Winners Table (10 points):** The table should include columns for the car's №, image, name, number of wins, and best time in seconds. If the same car wins more than once the number of wins should be incremented while best time should be saved only if it's better than the stored one.
+- [x] **Sorting Functionality (10 points):** Allow users to sort the table by the number of wins and best time, in ascending or descending order.
       <br>
 
 # Application Architecture (40 points)
@@ -75,12 +77,12 @@
 
 # Code Quality and Standards (15 points)
 
-- [ ] **Eslint with Airbnb Style Guide (15 points):** Code must adhere to the Airbnb ESLint configuration to maintain code quality, as outlined in the Airbnb style guide. Specific rules may be adjusted only with mentor approval, and there should be no ESLint errors or warnings.
+- [x] **Eslint with Airbnb Style Guide (15 points):** Code must adhere to the Airbnb ESLint configuration to maintain code quality, as outlined in the Airbnb style guide. Specific rules may be adjusted only with mentor approval, and there should be no ESLint errors or warnings.
 
 # Code Organization and Efficiency (15 points)
 
 - [x] **Function Modularization (10 points):** Code should be organized into small, clearly named functions with specific purposes. Each function should not exceed 40 lines, reflecting strong typing and avoiding the use of magic numbers or strings.
-- [ ] **Code Duplication and Magic Numbers (5 points):** Minimize code duplication and maintain readability by avoiding the use of magic numbers or strings throughout the codebase.
+- [x] **Code Duplication and Magic Numbers (5 points):** Minimize code duplication and maintain readability by avoiding the use of magic numbers or strings throughout the codebase.
 
 <br>
 

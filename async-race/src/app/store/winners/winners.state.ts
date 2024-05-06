@@ -1,4 +1,4 @@
-import { Winner } from "../../models/winners.interfaces";
+import { Winner } from '../../models/winners.interfaces';
 
 export interface WinnersState {
     winners: Winner[];
@@ -8,16 +8,16 @@ export interface WinnersState {
     sort: string;
     order: string;
     loading: boolean;
-    error: any;
+    error: string;
 }
 
 export const winnersState: WinnersState = {
     winners: [],
-    totalCount: "0",
+    totalCount: '0',
     page: 1,
     limit: 10,
-    sort: "id",
-    order: "ASC",
+    sort: 'id',
+    order: 'ASC',
     loading: false,
-    error: null,
+    error: '',
 };

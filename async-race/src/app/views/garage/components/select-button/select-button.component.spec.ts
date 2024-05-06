@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectButtonComponent } from "./select-button.component";
+import { SelectButtonComponent } from './select-button.component';
 
-describe("SelectButtonComponent", () => {
+describe('SelectButtonComponent', () => {
     let component: SelectButtonComponent;
     let fixture: ComponentFixture<SelectButtonComponent>;
 
@@ -16,7 +16,7 @@ describe("SelectButtonComponent", () => {
         fixture.detectChanges();
     });
 
-    it("should create", () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });

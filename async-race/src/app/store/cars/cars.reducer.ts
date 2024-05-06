@@ -1,8 +1,13 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { isMoving, loadCarsFail, loadCarsSuccess, selectCar, setPage } from "./cars.actions";
-import { carsState } from "./cars.state";
-import { selectIsMoving } from "./cars.selectors";
+import {
+    isMoving,
+    loadCarsFail,
+    loadCarsSuccess,
+    selectCar,
+    setPage,
+} from './cars.actions';
+import { carsState } from './cars.state';
 
 export const carsReducer = createReducer(
     carsState,
@@ -10,12 +15,12 @@ export const carsReducer = createReducer(
         ...state,
         cars: action.cars,
         totalCount: action.totalCount,
-        errorMessage: "",
+        errorMessage: '',
     })),
     on(loadCarsFail, (state, action) => ({
         ...state,
         cars: [],
-        totalCount: "0",
+        totalCount: '0',
         errorMessage: action.errorMessage,
     })),
     on(selectCar, (state, { selectedCar }) => ({

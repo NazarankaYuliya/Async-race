@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResetButtonComponent } from "./reset-button.component";
+import { ResetButtonComponent } from './reset-button.component';
 
-describe("ResetButtonComponent", () => {
+describe('ResetButtonComponent', () => {
     let component: ResetButtonComponent;
     let fixture: ComponentFixture<ResetButtonComponent>;
 
@@ -16,7 +16,7 @@ describe("ResetButtonComponent", () => {
         fixture.detectChanges();
     });
 
-    it("should create", () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });

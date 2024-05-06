@@ -1,4 +1,4 @@
-import { Car } from "../../models/garage.interfaces";
+import { Car } from '../../models/garage.interfaces';
 
 export interface CarsModel {
     cars: Car[];
@@ -12,10 +12,10 @@ export interface CarsModel {
 
 export const carsState: CarsModel = {
     cars: [],
-    totalCount: "0",
+    totalCount: '0',
     page: 1,
     limit: 7,
-    errorMessage: "",
+    errorMessage: '',
     selectedCar: null,
     isMoving: false,
 };

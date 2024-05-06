@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenerateRandomCarsComponent } from "./generate-random-cars.component";
+import { GenerateRandomCarsComponent } from './generate-random-cars.component';
 
-describe("GenerateRandomCarsComponent", () => {
+describe('GenerateRandomCarsComponent', () => {
     let component: GenerateRandomCarsComponent;
     let fixture: ComponentFixture<GenerateRandomCarsComponent>;
 
@@ -16,7 +16,7 @@ describe("GenerateRandomCarsComponent", () => {
         fixture.detectChanges();
     });
 
-    it("should create", () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });

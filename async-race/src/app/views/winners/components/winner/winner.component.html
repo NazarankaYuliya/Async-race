@@ -1,13 +1,13 @@
 @if (winner && winner.id && car) {
-    <div class="winner-container">
-        <div>{{ winner.id }}</div>
-        <div class="car-image">
-            <app-car-image [car]="car"></app-car-image>
-        </div>
-
-        <div>{{ car.name }}</div>
-
-        <div>{{ winner.wins }}</div>
-        <div>{{ winner.time }}</div>
+<div class="winner-container">
+    <div>{{ winner.id }}</div>
+    <div class="car-image">
+        <app-car-image [car]="car"></app-car-image>
     </div>
+
+    <div>{{ car.name }}</div>
+
+    <div>{{ winner.wins }}</div>
+    <div>{{ winner.time }}</div>
+</div>
 }

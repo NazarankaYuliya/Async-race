@@ -4,8 +4,13 @@
         <div>Car</div>
         <div>Name</div>
 
-        <div (click)="sortWins()">Wins</div>
-        <div (click)="sortTime()">Best time (seconds)</div>
+        <div><button (click)="sortWins()"><span
+                    [innerHTML]="winsSortOrder === 'asc' ? '&#9650;' : '&#9660;'"></span></button> Wins
+
+        </div>
+        <div><button (click)="sortTime()"><span
+                    [innerHTML]="timeSortOrder === 'asc' ? '&#9650;' : '&#9660;'"></span></button> Best time (s)
+        </div>
     </div>
 
     <div class="table-body">

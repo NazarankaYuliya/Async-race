@@ -1,35 +1,37 @@
-import { Car } from "../models/garage.interfaces";
-import { MAX_COLOR_VALUE } from "../shared/constants";
+import { Car } from '../models/garage.interfaces';
+import { MAX_COLOR_VALUE, ONE } from '../shared/constants';
 
 const carBrands: string[] = [
-    "Tesla",
-    "Ford",
-    "Chevrolet",
-    "Toyota",
-    "Honda",
-    "BMW",
-    "Mercedes",
-    "Audi",
-    "Volkswagen",
-    "Lamborghini",
+    'Tesla',
+    'Ford',
+    'Chevrolet',
+    'Toyota',
+    'Honda',
+    'BMW',
+    'Mercedes',
+    'Audi',
+    'Volkswagen',
+    'Lamborghini',
 ];
 
 const carModels: string[] = [
-    "Model S",
-    "Mustang",
-    "Camaro",
-    "Corolla",
-    "Accord",
-    "X5",
-    "E-Class",
-    "A4",
-    "Golf",
-    "Aventador",
+    'Model S',
+    'Mustang',
+    'Camaro',
+    'Corolla',
+    'Accord',
+    'X5',
+    'E-Class',
+    'A4',
+    'Golf',
+    'Aventador',
 ];
 
 function generateRandomName(): string {
-    const randomFirstPart = carBrands[Math.floor(Math.random() * carBrands.length)];
-    const randomSecondPart = carModels[Math.floor(Math.random() * carModels.length)];
+    const randomFirstPart =
+        carBrands[Math.floor(Math.random() * carBrands.length)];
+    const randomSecondPart =
+        carModels[Math.floor(Math.random() * carModels.length)];
     return `${randomFirstPart} ${randomSecondPart}`;
 }
 
@@ -43,7 +45,7 @@ function generateRandomColor(): string {
 export function generateRandomCars(count: number): Car[] {
     const cars: Car[] = [];
 
-    for (let i = 0; i < count; i += 1) {
+    for (let i = 0; i < count; i += ONE) {
         const randomName = generateRandomName();
         const randomColor = generateRandomColor();
         const newCar: Car = {
