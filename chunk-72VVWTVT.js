@@ -1,0 +1,1 @@
+import{j as t,k as r}from"./chunk-L4GDQ2ZO.js";var o=r("winners"),c=t(o,e=>e.winners),n=t(o,e=>e.totalCount),l=t(o,e=>e.page),i=t(o,e=>e.limit),p=t(o,e=>e.sort),a=t(o,e=>e.order),x=t(o,e=>e.loading),d=t(o,e=>e.error);export{c as a,n as b,l as c,i as d,p as e,a as f};
